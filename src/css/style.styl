@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+*
+    box-sizing: border-box
+    margin 0
+    padding 0
+
+body
+    font-family 'Roboto', sans-serif
+input
+    outline none
+a
+    text-decoration: none
+.container
+    max-width: 1520px
+    margin: 0 auto
+    padding-left 20px
+    padding-right 20px
+    
+// Плитка картинок
+.images_grid
+    .container
+        display: grid
+        @media screen and (min-width 1024px)
+            margin-top 110px
+            grid-template-columns: repeat(3, 1fr)
+            grid-gap: 30px
+        @media screen and (max-width 1023px) and (min-width 768px)
+            margin-top 80px
+            grid-template-columns: repeat(2, 1fr)
+            grid-gap: 30px
+        @media screen and (max-width 767px)
+            margin-top 50px
+            grid-template-columns: 1fr
+            grid-gap: 20px
+
+.image 
+    aspect-ratio: 1
+    border-radius: 8px
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor pointer
+
+// Шапка ---------- 
+.header
+    background: #000;
+    color: #fff;
+    .container
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+// Главная страница
+.header.header_home
+    .logo img
+        height: auto;
+    @media screen and (min-width 1024px)
+        padding: 36px 0;
+        .logo img
+            width: 184px;
+    @media screen and (max-width 1023px)
+        padding: 22px 0;
+        .logo img
+            width: 84px;
+// Остальные страницы
+.header.header_page
+    .logo img
+        height: auto;
+    @media screen and (min-width 1024px)
+        padding: 16px 0;
+        .logo img
+            width: 112px;
+    @media screen and (max-width 1023px)
+        padding: 22px 0;
+        .logo img
+            width: 84px;
+// Навигация
+.header_nav
+    display: flex
+    .nav_item
+        color #fff
+        display: flex
+    .nav_title
+        padding-left 10px
+        font-size 20px
+    @media screen and (min-width 1024px)
+        gap 38px
+    @media screen and (max-width 1023px)
+        gap 21px
+        .nav_title
+            display: none
+    
+
+// Главная страница ---------- 
+// Блок поиска
+.search_block
+    min-height: 230px
+    display: flex
+    align-items: center
+    justify-content: center
+    background-image: url('/src/assets/background.png')
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-bottom: 16px solid #C4C4C4
+.search_input_wrapper
+    position relative
+    width 100%
+    max-width: 866px
+    margin 0 20px
+    z-index 1
+    &:after
+        content: ''
+        position: absolute
+        top: 50%
+        right 23px
+        width 23px
+        height 23px
+        background-image: url('/src/assets/search_black.svg')
+        background-repeat: no-repeat
+        background-size: 23px
+        transform: translateY(-50%);
+        z-index 2
+        cursor pointer
+.search_input
+    height 70px
+    width 100%
+    font-size 24px
+    z-index 1
+    &::placeholder
+        font-size 24px
+        color #000
+        user-select: none
+    @media screen and (min-width 1024px)
+        padding: 10px 36px
+    @media screen and (max-width 1023px)
+        padding: 10px 24px
+
+// Картинка детально ---------- 
+.image_page
+    position relative
+    @media screen and (min-width 1024px)
+        padding-top: 42px
+        padding-bottom: 80px
+    @media screen and (max-width 1023px)
+        padding-top: 40px
+        padding-bottom: 120px
+    .container{}
+
+.image_info
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+// Автор
+.image_author
+    display: flex
+    gap: 10px
+    .author_img
+        border: 1px solid #fff
+        border-radius: 8px
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    .author_info{}
+    .author_name
+        font-weight normal
+    @media screen and (min-width 1024px)
+        .author_img
+            width 55px
+            height 55px
+        .author_name
+            font-size 30px
+            color #fff
+        .author_nick
+            color #fff
+    @media screen and (max-width 1023px)
+        .author_img
+            width 48px
+            height 48px
+        .author_name
+            font-size 18px
+        .author_nick
+            font-size 14px
+            color #BDBDBD
+
+// Кнопки
+.image_buttons
+    display: flex
+    .favorite_btn
+        border none
+        outline none
+        border-radius: 8px
+        background-image url('/src/assets/favorite_black.svg')
+        background-size: 23px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #fff
+        cursor pointer
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+        transition: all .2s ease
+        &.favorite_btn__active
+            background-image url('/src/assets/favorite.svg')
+            background-color: #000
+    .download_btn
+        border-radius: 8px
+        background-color: #FFF200
+        background-image url('/src/assets/download.svg')
+        background-size: 23px;
+        background-repeat: no-repeat;
+        cursor pointer
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+        color: #000;
+    @media screen and (min-width 1024px)
+        gap 20px
+        .favorite_btn
+            width 48px
+            height 48px
+        .download_btn 
+            display: flex;
+            align-items: center;
+            padding-left: 58px;
+            padding-right: 30px;
+            background-position: center left 22px;
+    @media screen and (max-width 1023px)
+        gap 16px
+        .favorite_btn
+            width 40px
+            height 40px
+        .download_btn 
+            width 40px
+            height 40px
+            background-position: center
+            span
+                display: none
+
+// Картинка большая
+.image_detail
+    margin-top 40px
+    width: 100%;
+    height: auto;
+    border-radius: 8px
+    @media screen and (min-width 1024px)
+        box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.50);
+
+// Задний фон
+.image_back
+    position: absolute;
+    left: -8px
+    right: -8px
+    top: -40%;
+    height: 100%;
+    background-blend-mode: color;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(4px) grayscale(100%) brightness(0.6)
+    z-index: -1;
+    @media screen and (max-width 1023px)
+        display: none
+
+// Избранные ---------- 
+.favorite_page
+    border-top: 16px solid #c4c4c4
+    .favorite_title
+        font-weight bold
+        text-align: center
+        margin 0
+        
+    @media screen and (min-width 1024px)
+        padding-bottom: 80px
+        .favorite_title
+            font-size 72px
+            padding 94px 0 0
+    @media screen and (max-width 1023px)
+        padding-bottom: 120px
+        .favorite_title
+            font-size 36px
+            padding 40px 0 0
