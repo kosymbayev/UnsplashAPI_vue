@@ -13,36 +13,9 @@
             </div>
         </div>
         
-        <!-- Рандомные картинки -->
-        <section v-if="areRandomImages" class="images_grid">
-            <div class="container">
-                <router-link 
-                    v-for="image in randomImages" 
-                    :key="image.id" 
-                    :to="`/image/${image.id}`"
-                    class="image"
-                    :style="{ backgroundImage: `url(${image.urls?.small || ''})` }"
-                    :alt="image.description || 'Random Image'"
-                >
-                </router-link>
-            </div>
-        </section>
-
-        <!-- Картинки по запросу -->
-        <section v-else class="images_grid">
-            <div class="container">
-                <router-link 
-                    v-for="image in searchedImages" 
-                    :key="image.id" 
-                    :to="`/image/${image.id}`"
-                    class="image"
-                    :style="{ backgroundImage: `url(${image.urls?.small || ''})` }"
-                    :alt="image.description || 'Searched Image'"
-                >
-                </router-link>
-            </div>
-        </section>
-
+        <!-- Рандомные картинки и Картинки по запросу -->
+        <ImagesGrid :images="areRandomImages ? randomImages : searchedImages" />
+        
     </div>
 </template>
 
@@ -50,8 +23,14 @@
 import env from '../env';
 import axios from 'axios';
 
+import ImagesGrid from '../components/ImagesGrid.vue';
+
 export default {
     name: 'HomeView',
+    components: 
+    {
+        ImagesGrid
+    },
     data() {
         return {
             randomImages: [],

@@ -3,17 +3,7 @@
 
         <h1 class="favorite_title">Избранное</h1>
         <div v-if="favoriteImages.length == 0" style="text-align: center;">У вас нет избранных</div>
-        <div v-else class="images_grid">
-            <div class="container">
-                <router-link 
-                    v-for="image in favoriteImages" 
-                    :key="image.id" class="image" 
-                    :to="`/image/${image.id}`"
-                    :style="{ backgroundImage: `url(${image.urls?.small || ''})` }"
-                >
-                </router-link>
-            </div>
-        </div>
+        <ImagesGrid v-else :images="favoriteImages" />
             
     </section>
 </template>
@@ -22,8 +12,14 @@
 import env from '../env';
 import axios from 'axios';
 
+import ImagesGrid from '../components/ImagesGrid.vue';
+
 export default {
     name: 'FavoritesView',
+    components: 
+    {
+        ImagesGrid
+    },
     data() {
         return {
             favoriteImages: [],

@@ -56,7 +56,7 @@ export default {
     },
     methods: 
     {
-        async fetchImageDetail()
+        async fetchImageDetail()// Достаю картинку
         {
             try 
             {
