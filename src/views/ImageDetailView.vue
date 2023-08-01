@@ -41,6 +41,7 @@
 <script>
 import env from '../env';
 import axios from 'axios';
+//import { mapGetters, mapActions } from 'vuex';
 
 export default {
     name: 'ImageDetailView',
@@ -54,6 +55,12 @@ export default {
     {
         this.fetchImageDetail();
     },
+    /*computed:
+    {
+        ...mapGetters([
+            'FAVORITES'
+        ])
+    },*/
     methods: 
     {
         async fetchImageDetail()// Достаю картинку
@@ -80,19 +87,25 @@ export default {
             const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
             const imageId = this.image.id;
 
-            if( favorites.includes(imageId) )// Удаляю из избранных
+            if( favorites.includes(imageId) /*this.FAVORITES.includes(imageId)*/ )// Удаляю из избранных
             {
                 const updatedFavorites = favorites.filter(id => id !== imageId);
                 localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
                 this.isFavorite = false;
+                //this.REMOVE_FROM_FAVORITE(imageId)
             }
             else// Добавляю в избранное
             {
                 favorites.push(imageId);
                 localStorage.setItem('favorites', JSON.stringify(favorites));
                 this.isFavorite = true;
+                //this.ADD_TO_FAVORITE(imageId)
             }
-        }
+        },
+        /*...mapActions([
+            'ADD_TO_FAVORITE',
+            'REMOVE_FROM_FAVORITE'
+        ])*/
     }
 
 }

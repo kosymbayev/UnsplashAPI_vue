@@ -4,7 +4,7 @@
         <h1 class="favorite_title">Избранное</h1>
         <div v-if="favoriteImages.length == 0" style="text-align: center;">У вас нет избранных</div>
         <ImagesGrid v-else :images="favoriteImages" />
-            
+
     </section>
 </template>
 

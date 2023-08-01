@@ -1,41 +1,41 @@
 import { createStore } from 'vuex';
 
-
-const state = {
-  images: [],       // Массив всех картинок
-  favorites: [],    // Массив избранных картинок (хранит идентификаторы картинок)
-};
-
-const mutations = {
-  setImages(state, images) {
-    state.images = images;
-  },
-  addToFavorites(state, imageId) {
-    if (!state.favorites.includes(imageId)) {
-      state.favorites.push(imageId);
-    }
-  },
-  removeFromFavorites(state, imageId) {
-    state.favorites = state.favorites.filter((id) => id !== imageId);
-  },
-};
-
-const actions = {
-  // Здесь вы можете определить действия для загрузки картинок и других операций
-};
-
-const getters = {
-  getFavoriteImages(state) {
-    // Возвращаем список избранных картинок на основе идентификаторов
-    return state.images.filter((image) => state.favorites.includes(image.id));
-  },
-};
-
 const store = createStore({
-  state,
-  mutations,
-  actions,
-  getters,
+    state: 
+    {
+        favorites: []
+    },
+    mutations:
+    {
+        ADD_TO_FAVORITE(state, imageId) 
+        {
+            state.favorites.push(imageId);
+            console.log('ADD_TO_FAVORITE' + state.favorites)
+        },
+        REMOVE_FROM_FAVORITE(state, imageId) 
+        {
+            state.favorites = state.favorites.filter((id) => id !== imageId);
+            console.log('REMOVE_FROM_FAVORITE' + state.favorites)
+        },
+    },
+    actions:
+    {
+        ADD_TO_FAVORITE({commit}, imageId) 
+        {
+            commit('ADD_TO_FAVORITE', imageId)
+        },
+        REMOVE_FROM_FAVORITE({commit}, imageId) 
+        {
+            commit('REMOVE_FROM_FAVORITE', imageId)
+        },
+    },
+    getters:
+    {
+        FAVORITES(state) 
+        {
+            return state.favorites
+        }
+    }
 });
 
 export default store;
